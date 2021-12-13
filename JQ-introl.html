@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JQ Intro</title>
+
+  <script type="text/javascript" src="jquery.min.js"></script>
+
+  <script type="text/javascript">
+    // Your Script Here!
+    // $(document).ready(function (argument) {
+
+    $(function() {
+      $('button').click(function (argument) {
+        // var h1 = $('#myh1');
+        // h1.hide();
+        $(this).hide();
+      })
+
+      // console.log(h1);
+    })
+    
+  </script>
+
+</head>
+<body>
+  <h1 id="myh1">Hello JQuery</h1>
+
+  <button>Click</button>
+</body>
+</html>
