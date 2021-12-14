@@ -12,10 +12,14 @@
     // $(document).ready(function (argument) {
 
     $(function() {
-      $('button').click(function (argument) {
+      // $('#mydiv').html('<button>Button by JS</button>');
+
+      $('button').on("click",function (argument) {
         // var h1 = $('#myh1');
         // h1.hide();
-        $(this).hide();
+        $('h1').hide(5000,function () { 
+          alert('Hide h1 element!');
+         });
       })
 
       // console.log(h1);
@@ -25,6 +29,10 @@
 
 </head>
 <body>
+  <div id="mydiv">
+    <p>Hello P</p>
+  </div>
+
   <h1 id="myh1">Hello JQuery</h1>
 
   <button>Click</button>
