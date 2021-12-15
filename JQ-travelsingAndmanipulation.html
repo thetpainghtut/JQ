@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JQ Travelsing and Manipulation</title>
+
+  <script type="text/javascript" src="jquery.min.js"></script>
+
+  <script type="text/javascript">
+    // Your Script Here!
+    // $(document).ready(function (argument) {
+
+    $(function() {
+      $('button').on("click",function () { 
+        //   console.log($('#mydiv').text('<span>This is a span tag.<span>'));
+            var mya = $('a');
+            mya.attr({
+                'href': 'https://facebook.com'
+            }).text('Go Facebook');
+
+            $('a').before('Hello Text');
+
+            $('#mydiv').empty();
+       })
+    })
+    
+  </script>
+
+</head>
+<body>
+  <!-- Travelsing -->
+
+  <!-- Getting and Setting -->
+    <div id="mydiv">
+        <p>
+            Myanmar (formerly Burma) is a Southeast Asian nation of more than 100 ethnic groups, bordering India, Bangladesh, China, Laos and Thailand. Yangon (formerly Rangoon), the country's largest city, is home to bustling markets, numerous parks and lakes, and the towering, gilded Shwedagon Pagoda, which contains Buddhist relics and dates to the 6th century.
+        </p>
+    </div>
+
+
+    <a href="https://google.com" target="_blank">Go Google</a>
+
+    <button>Click</button>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JQ Effects</title>
+
+  <script type="text/javascript" src="jquery.min.js"></script>
+
+  <script type="text/javascript">
+    // Your Script Here!
+    // $(document).ready(function (argument) {
+
+    $(function() {
+        $('#hide').on("click",function () { 
+          $('p').hide('fast');
+        })
+
+        $('#show').on("click",function () { 
+            $('p').css({
+                color: 'red',
+                fontSize: '20px',
+            }).show('slow');
+        })
+
+        $('#toggle').on("click",function () { 
+          $('p').toggle();
+        })
+
+        $('#fadein').on("click",function () { 
+          $('p').fadeIn();
+        })
+
+        $('#fadeout').on("click",function () { 
+          $('p').fadeOut();
+        })
+
+        $('#slidedown').on("click",function () { 
+          $('p').slideDown();
+        })
+
+        $('#slideup').on("click",function () { 
+          $('p').slideUp();
+        })
+
+        $('#animate').on("click",function () { 
+          $('div').animate({
+            left: '150px',
+            height:'+=150px',
+            width:'+=150px'
+          });
+        })
+    })
+    
+  </script>
+
+</head>
+<body>
+  <p>
+    Myanmar (formerly Burma) is a Southeast Asian nation of more than 100 ethnic groups, bordering India, Bangladesh, China, Laos and Thailand. Yangon (formerly Rangoon), the country's largest city, is home to bustling markets, numerous parks and lakes, and the towering, gilded Shwedagon Pagoda, which contains Buddhist relics and dates to the 6th century.
+  </p>
+
+  <div style="width: 100px; height: 100px; background-color: red;position: relative;"></div>
+
+  <button id="hide">Hide Btn</button>
+  <button id="show">Show Btn</button>
+  <button id="toggle">Toggle Btn</button>
+
+  <button id="fadein">FadeIn Btn</button>
+  <button id="fadeout">FadeOut Btn</button>
+  <!-- FadeToggle / FadeTo -->
+
+  <button id="slidedown">SlideDown Btn</button>
+  <button id="slideup">SlideUp Btn</button>
+  <!-- SlideToggle -->
+
+  <button id="animate">Animate Btn</button>
+
+</body>
+</html>
