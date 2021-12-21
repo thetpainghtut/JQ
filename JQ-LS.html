@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JQ Local Storage</title>
+
+  <script type="text/javascript" src="jquery.min.js"></script>
+
+  <script type="text/javascript">
+    // Your Script Here!
+    // $(document).ready(function (argument) {
+
+    $(function() {
+      localStorage.setItem('name', 'Thet Paing Htut');
+      localStorage.setItem('age', 26);
+
+      let name = localStorage.getItem('name');
+      console.log(name);
+      // localStorage.removeItem('age');
+      localStorage.clear();
+    })
+    
+  </script>
+
+</head>
+<body>
+  
+</body>
+</html>
