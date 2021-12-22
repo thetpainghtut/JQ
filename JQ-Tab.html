@@ -29,7 +29,7 @@
         }
 
         div.content {
-            max-width: 500px;
+            max-width: 800px;
             background-color: orange;
             padding: 20px 50px;
             margin: 0 auto 10px;
@@ -57,6 +57,79 @@
 
             event.preventDefault();
         })
+
+        // LocalStorage
+        $('.atc').on("click",function () { 
+            let id = $(this).data('id');
+            let name = $(this).data('name');
+            let price = $(this).data('price');
+            let item = {
+                id: id,
+                name: name,
+                price: price,
+                qty: 1
+            }
+            // console.log(item)
+
+            let cart = localStorage.getItem('cart');
+            let myArr = '';
+
+            if(cart != null){
+                myArr = JSON.parse(cart);
+            }else{
+                myArr = []
+            }
+
+            // homework
+            myArr.push(item)
+
+            // JS Object => JSON String
+            let myArrString = JSON.stringify(myArr);
+            // console.log(myArrString)
+
+            localStorage.setItem('cart',myArrString);
+            getdata();
+        })
+
+        // Get Data From LS
+        function getdata() { 
+            let cart = localStorage.getItem('cart');
+            if(cart != null){
+                let myArr = JSON.parse(cart);
+                let row = ''
+                for([index,item] of myArr.entries()){
+                    row += `<tr>
+                            <td>
+                                <button class="remove" data-id="${index}">Remove</button> 
+                                ${++index}
+                            </td>
+                            <td>${item.name}</td>
+                            <td>${item.price}</td>
+                            <td>${item.qty}</td>
+                            <td>${item.qty*item.price} Ks</td>
+                        </tr>`
+                }
+                $('tbody').html(row)
+            }
+        }
+        getdata();
+
+        // Remove 
+        $('tbody').on("click",".remove",function () { 
+            let index = $(this).data('id');
+            // console.log(index)
+            let cart = localStorage.getItem('cart');
+            let myArr = JSON.parse(cart);
+            // Delete one row
+            myArr.splice(index,1)
+            // JS Object => JSON String
+            let myArrString = JSON.stringify(myArr);
+            // console.log(myArrString)
+            localStorage.setItem('cart',myArrString);
+            getdata();
+        })
+
+        
     })
     
   </script>
@@ -75,6 +148,14 @@
             
             <li>
                 <a href="#contact">Contact</a>
+            </li>
+
+            <li>
+                <a href="#shop">Shop</a>
+            </li>
+
+            <li>
+                <a href="#cart">Cart</a>
             </li>
         </ul>
 
@@ -97,6 +178,51 @@
             <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus voluptas mollitia impedit eaque nisi distinctio, nihil necessitatibus aliquam, enim, aspernatur dolorum recusandae optio ad voluptates incidunt. Suscipit sit voluptatem fuga.
             </p>
+        </div>
+
+        <div class="content" id="shop">
+            <h3>Shop Section</h3>
+            
+            <div class="shop">
+                <div class="item">
+                    <img src="where.jpeg" alt="Where" width="100px">
+                    <p>Item One</p>
+                    <strong>500 Ks</strong>
+                    <button class="atc" data-id="1" data-name="Item One" data-price="500">Add To Cart</button>
+                </div>
+
+                <div class="item">
+                    <img src="where.jpeg" alt="Where" width="100px">
+                    <p>Item Two</p>
+                    <strong>1000 Ks</strong>
+                    <button class="atc" data-id="2" data-name="Item Two" data-price="1000">Add To Cart</button>
+                </div>
+
+                <div class="item">
+                    <img src="where.jpeg" alt="Where" width="100px">
+                    <p>Item Three</p>
+                    <strong>200 Ks</strong>
+                    <button class="atc" data-id="3" data-name="Item Three" data-price="200">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="content" id="cart">
+            <h3>Cart Section</h3>
+            <table border="1" cellspacing="0" cellpadding="10" width="100%">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
