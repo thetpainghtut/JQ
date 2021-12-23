@@ -81,7 +81,17 @@
             }
 
             // homework
-            myArr.push(item)
+            let status=0;
+            for(row of myArr){ // 1,2
+                if(row.id == id){ // 3
+                    row.qty++;
+                    status = 1;
+                }
+            } 
+
+            if(status == 0){
+                myArr.push(item)
+            }
 
             // JS Object => JSON String
             let myArrString = JSON.stringify(myArr);
@@ -97,19 +107,32 @@
             if(cart != null){
                 let myArr = JSON.parse(cart);
                 let row = ''
+                let total = 0;
+                let i = 0;
                 for([index,item] of myArr.entries()){
+                    total += (item.qty*item.price);
                     row += `<tr>
                             <td>
                                 <button class="remove" data-id="${index}">Remove</button> 
-                                ${++index}
+                                ${++i}
                             </td>
                             <td>${item.name}</td>
                             <td>${item.price}</td>
-                            <td>${item.qty}</td>
+                            <td>
+                                <input type="number" min="1" value="${item.qty}" data-id="${index}" class="updateqty">
+                            </td>
                             <td>${item.qty*item.price} Ks</td>
                         </tr>`
                 }
+
+                row += `<tr>
+                            <td colspan="4">Total Amount</td>
+                            <td>${total} Ks</td>
+                        </tr>`
+
                 $('tbody').html(row)
+            }else{
+                $('tbody').html(`<tr><td colspan="5">Your Cart is empty!</td></tr>`);
             }
         }
         getdata();
@@ -129,7 +152,26 @@
             getdata();
         })
 
-        
+        // increase - decrease Qty
+        $('tbody').on("change",".updateqty",function () { 
+            let index = $(this).data('id');
+            // console.log(index)
+            let qty = $(this).val();
+            let cart = localStorage.getItem('cart');
+            let myArr = JSON.parse(cart);
+            myArr[index].qty = qty
+            // JS Object => JSON String
+            let myArrString = JSON.stringify(myArr);
+            // console.log(myArrString)
+            localStorage.setItem('cart',myArrString);
+            getdata();
+        })
+
+        // checkout
+        $('.checkout').on("click",function () { 
+            localStorage.removeItem('cart')
+            getdata();
+        })
     })
     
   </script>
@@ -209,21 +251,31 @@
 
         <div class="content" id="cart">
             <h3>Cart Section</h3>
-            <table border="1" cellspacing="0" cellpadding="10" width="100%">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Qty</th>
-                        <th>Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
+            <div class="mycart">
+                <table border="1" cellspacing="0" cellpadding="10" width="100%" style="margin-bottom: 10px;">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Qty</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+
+                <button class="checkout">Checkout</button>
+            </div>
         </div>
     </div>
 </body>
 </html>
+
+<!-- // Homework
+    - cart noti (all qty)
+    - sweet alert 
+        - add to cart (auto hide)
+        - checkout (complete => good job) -->
