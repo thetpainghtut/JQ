@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Storage Exercises</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Luxurious+Roman&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Luxurious Roman', cursive;
+      background-color: #eeeeee;
+    }
+
+    p{
+      font-size: 13px;
+    }
+
+    .header {
+      background-color: white;
+      padding: 5px;
+      text-align: center;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    ul.link-wapper {
+      list-style-type: none;
+      margin: 20px;
+      padding: 0;
+      text-align: center;
+    }
+
+    ul.link-wapper li {
+      display: inline-block;
+      padding: 10px;
+    }
+
+    ul.link-wapper li a {
+      text-decoration: none;
+      color: black;
+      padding: 10px;
+    }
+
+    ul.link-wapper li a.active{
+      color: #a701a7;
+      font-weight: bold;
+      border-bottom: 3px solid #030303;
+    }
+
+    div.main-content{
+      padding: 50px;
+    }
+
+    div.content{
+      display: none;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 300px 300px 300px 300px;
+      grid-gap: 40px;
+    }
+
+    div.item {
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .p-mid{
+      padding: 20px;
+    }
+
+    .m-0{
+      margin: 0;
+    }
+
+    .addtocart, .checkout{
+      height: 40px;
+      width: 100px;
+      background-color: #a701a7;
+      color: white;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .noti{
+      color: red;
+    }
+  </style>
+
+  <script type="text/javascript" src="../jquery.min.js"></script>
+
+  <script src="sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css">
+
+  <script type="text/javascript" src="custom.js"></script>
+  
+</head>
+<body>
+  <div class="header">
+    <ul class="link-wapper">
+      <li>
+          <a href="#home" class="active">Home</a>
+      </li>
+
+      <li>
+          <a href="#about">About</a>
+      </li>
+      
+      <li>
+          <a href="#contact">Contact</a>
+      </li>
+
+      <li>
+          <a href="#shop">Shop</a>
+      </li>
+
+      <li>
+          <a href="#cart">Cart <span class="noti"></span></a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="content" id="home">
+      <h3>Home Section</h3>
+      <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus voluptas mollitia impedit eaque nisi distinctio, nihil necessitatibus aliquam, enim, aspernatur dolorum recusandae optio ad voluptates incidunt. Suscipit sit voluptatem fuga.
+      </p>
+    </div>
+
+    <div class="content" id="about">
+      <h3>About Section</h3>
+      <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus voluptas mollitia impedit eaque nisi distinctio, nihil necessitatibus aliquam, enim, aspernatur dolorum recusandae optio ad voluptates incidunt. Suscipit sit voluptatem fuga.
+      </p>
+    </div>
+
+    <div class="content" id="contact">
+      <h3>Contact Section</h3>
+      <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus voluptas mollitia impedit eaque nisi distinctio, nihil necessitatibus aliquam, enim, aspernatur dolorum recusandae optio ad voluptates incidunt. Suscipit sit voluptatem fuga.
+      </p>
+    </div>
+
+    <div class="content" id="shop">
+
+      <h3>Our Products</h3>
+
+      <div class="grid-container">
+        <div class="grid-item">
+          <div class="item">
+            <img src="01bittergourd.jpeg" alt="Norway" style="width:100%">
+            <div class="p-mid">
+              <h3 class="m-0">Item One</h3>
+              <p>1,500 Ks</p>
+              <button class="addtocart" data-id="1" data-name="Item One" data-price="1500">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="item">
+            <img src="02longbeansraw_thumb.jpeg" alt="Norway" style="width:100%">
+            <div class="p-mid">
+              <h3 class="m-0">Item Two</h3>
+              <p>700 Ks</p>
+              <button class="addtocart" data-id="2" data-name="Item Two" data-price="700">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="grid-item">
+          <div class="item">
+            <img src="04Drum-stick.jpeg" alt="Norway" style="width:100%">
+            <div class="p-mid">
+              <h3 class="m-0">Item Three</h3>
+              <p>1200 Ks</p>
+              <button class="addtocart" data-id="3" data-name="Item Three" data-price="1200">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="item">
+            <img src="05ladyfinger.jpeg" alt="Norway" style="width:100%">
+            <div class="p-mid">
+              <h3 class="m-0">Item Four</h3>
+              <p>500 Ks</p>
+              <button class="addtocart" data-id="4" data-name="Item Four" data-price="500">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="item">
+            <img src="03chayote-jpg.jpeg" alt="Norway" style="width:100%">
+            <div class="p-mid">
+              <h3 class="m-0">Item Five</h3>
+              <p>1,000 Ks</p>
+              <button class="addtocart" data-id="5" data-name="Item Five" data-price="1000">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+        
+    </div>
+
+    <div class="content" id="cart">
+        <h3>Cart Section</h3>
+        <div class="mycart">
+            <table border="1" cellspacing="0" cellpadding="10" width="100%" style="margin-bottom: 10px;">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+
+            <button class="checkout">Checkout</button>
+        </div>
+    </div>
+  </div>
+</body>
+</html>
